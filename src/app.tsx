@@ -1,13 +1,38 @@
 import { FC } from "react";
-import "./mystyles.scss";
+import { useState } from "react";
 
-export const Square: FC = () => {
+const Square: FC = () => {
+  const [value, setValue] = useState(null);
+
+  const handleClick = () => {
+    setValue("X");
+  };
+  return (
+    <>
+      <button className="square" onClick={handleClick}>
+        {value}
+      </button>
+    </>
+  );
+};
+
+export const Board: FC = () => {
   return (
     <>
       <div className="board-row">
-        <button className="square">X</button>
-        <button className="square">X</button>
-        <button className="square">X</button>
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
       </div>
     </>
   );
