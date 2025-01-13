@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
-import { Square } from "./app";
+import { Board } from "./app";
+import "./mystyles.scss";
 
 const root = createRoot(document.getElementById("root"));
 
-root.render(<Square />);
+root.render(<Board />);
