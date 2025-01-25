@@ -1,16 +1,30 @@
+import React, { FC } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./login.scss";
 
-export const LoginPage = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+interface User {
+  username: string;
+  password: string;
+}
+
+export const LoginPage: FC = () => {
+  const [user, setUser] = useState<User>({
+    username: "",
+    password: "",
+  });
 
   const navigate = useNavigate();
+
+  const handleChangeUser =
+    (field: keyof User) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setUser({ ...user, [field]: e.target.value });
+    };
 
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (username === "admin" && password === "test") {
+    if (user.username === "admin" && user.password === "test") {
       navigate("/list");
     } else {
       alert("User / password not valid...");
@@ -22,18 +36,18 @@ export const LoginPage = () => {
       <h1>Login</h1>
       <form onSubmit={handleNavigation}>
         <div>
-          <label>Username</label>
           <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+            value={user.username}
+            onChange={handleChangeUser("username")}
           />
         </div>
         <div>
-          <label>Password</label>
           <input
+            placeholder="Password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={user.password}
+            onChange={handleChangeUser("password")}
           />
         </div>
         <button type="submit">Enter</button>
