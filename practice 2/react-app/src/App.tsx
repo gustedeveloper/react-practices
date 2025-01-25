@@ -1,11 +1,30 @@
 import "./App.css";
 
-function App() {
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { LoginPage } from "./components/login";
+import { ListPage } from "./components/list";
+import { DetailPage } from "./components/detail";
+
+export const App = () => {
   return (
     <>
-      <div></div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/list" element={<ListPage />} />
+          <Route path="/detail" element={<DetailPage />} />
+        </Routes>
+      </Router>
     </>
   );
-}
+};
 
-export default App;
+/*
+Router
+      Routes
+                Route
+                Route
+                ...
+      Routes
+Router
+*/
