@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { generatePath, Link } from "react-router-dom";
+import "./list.scss";
 
 interface Member {
   login: string;
@@ -20,12 +21,18 @@ export const ListPage = () => {
     <>
       <h1>List Page</h1>
       <Link to="/detail">Navigate to Detail Page</Link>
-      <div>
+      <div className="list-user-container">
+        <span className="list-header">Avatar</span>
+        <span className="list-header">ID</span>
+        <span className="list-header">Name</span>
         {members.map((member) => (
-          <div key={member.id}>
-            <span>{member.login}</span>
+          <>
             <img src={member.avatar_url} />
-          </div>
+            <span>{member.id}</span>
+            <Link to={generatePath("/detail/:id", { id: member.login })}>
+              {member.login}
+            </Link>
+          </>
         ))}
       </div>
     </>
