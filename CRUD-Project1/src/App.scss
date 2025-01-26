@@ -1,12 +1,20 @@
+@use "sass:color";
+
 $bg-color: #1b263b;
 $primary-color: #e0e1dd;
 $button-color: #778da9;
 $hover-color: #415a77;
+$alert-color: #e63946;
 
 body {
   background-color: $bg-color;
   color: $primary-color;
-  font-family: "Courier New", Courier, monospace;
+  font-family: Arial, Helvetica, sans-serif;
+
+  button {
+    cursor: pointer;
+    transition: ease 0.5s background-color;
+  }
 }
 
 #root {
@@ -40,9 +48,8 @@ body {
     border-radius: 10px;
     font-size: 1rem;
     background-color: $button-color;
-    transition: ease 1s background-color;
+
     color: $bg-color;
-    cursor: pointer;
   }
   button:hover {
     background-color: $hover-color;
@@ -52,9 +59,34 @@ body {
 ul > li {
   padding-top: 50px;
   display: grid;
-  grid-template-columns: 40px 800px 260px;
+  grid-template-columns: 40px 800px 260px 100px 100px;
   grid-auto-rows: 80px;
   justify-content: center;
+
+  button {
+    height: 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    margin: 5px;
+  }
+
+  .modify {
+    background-color: $button-color;
+  }
+
+  .modify:hover {
+    background-color: $hover-color;
+  }
+
+  .delete {
+    background-color: $alert-color;
+    color: $primary-color;
+  }
+
+  .delete:hover {
+    background-color: color.scale($alert-color, $lightness: -50%);
+  }
 
   .title {
     text-align: start;
