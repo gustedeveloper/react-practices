@@ -15,9 +15,14 @@ export const App = () => {
         completed: false,
       };
       setTasks([...tasks, newTask]);
+      setInputValue("");
     } else {
       alert("Enter new task!");
     }
+  };
+
+  const deleteTask = (id: number) => {
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   return (
@@ -37,6 +42,10 @@ export const App = () => {
             <span>{task.id}.</span>
             <span className="title">{task.title}</span>
             <span> Completed: {task.completed ? "yes" : "no"}</span>
+            <button className="modify">Modify</button>
+            <button onClick={() => deleteTask(task.id)} className="delete">
+              Delete
+            </button>
           </li>
         ))}
       </ul>
