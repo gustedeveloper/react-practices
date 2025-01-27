@@ -2,6 +2,7 @@ import "./App.scss";
 import { useState } from "react";
 import tasksData from "./data/tasks.json";
 import { Task } from "./model";
+import { v4 as uuidv4 } from "uuid";
 
 export const App = () => {
   const [tasks, setTasks] = useState<Task[]>(tasksData.tasks);
@@ -10,7 +11,7 @@ export const App = () => {
   const addNewTask = () => {
     if (inputValue.trim() !== "") {
       const newTask: Task = {
-        id: tasks.length + 1,
+        id: uuidv4(),
         title: inputValue,
         completed: false,
       };
@@ -21,7 +22,7 @@ export const App = () => {
     }
   };
 
-  const deleteTask = (id: number) => {
+  const deleteTask = (id: string) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
