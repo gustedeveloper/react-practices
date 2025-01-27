@@ -3,6 +3,7 @@ import { useState } from "react";
 import tasksData from "./data/tasks.json";
 import { Task } from "./model";
 import { v4 as uuidv4 } from "uuid";
+import { TaskList } from "./components/task-list";
 
 export const App = () => {
   const [tasks, setTasks] = useState<Task[]>(tasksData.tasks);
@@ -15,6 +16,7 @@ export const App = () => {
         title: inputValue,
         completed: false,
       };
+
       setTasks([...tasks, newTask]);
       setInputValue("");
     } else {
@@ -37,19 +39,7 @@ export const App = () => {
         />
         <button onClick={addNewTask}>Add</button>
       </div>
-      <ul>
-        {tasks.map((task) => (
-          <li key={task.id}>
-            <span>{task.id}.</span>
-            <span className="title">{task.title}</span>
-            <span> Completed: {task.completed ? "yes" : "no"}</span>
-            <button className="modify">Modify</button>
-            <button onClick={() => deleteTask(task.id)} className="delete">
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      <TaskList tasks={tasks} deleteTask={deleteTask} />
     </div>
   );
 };
