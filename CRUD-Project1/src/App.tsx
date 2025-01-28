@@ -3,7 +3,8 @@ import { useState } from "react";
 import tasksData from "./data/tasks.json";
 import { Task } from "./model";
 import { v4 as uuidv4 } from "uuid";
-import { TaskList } from "./components/task-list";
+import { TaskList } from "./components/task-list-component";
+import { AddEditTaskComponent } from "./components/add-edit-task-component";
 
 export const App = () => {
   const [tasks, setTasks] = useState<Task[]>(tasksData.tasks);
@@ -31,14 +32,11 @@ export const App = () => {
   return (
     <div>
       <h1>Tasks manager</h1>
-      <div className="add-container">
-        <label>Add new task</label>
-        <input
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <button onClick={addNewTask}>Add</button>
-      </div>
+      <AddEditTaskComponent
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        addNewTask={addNewTask}
+      />
       <TaskList tasks={tasks} deleteTask={deleteTask} />
     </div>
   );
