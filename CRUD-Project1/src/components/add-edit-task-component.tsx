@@ -5,6 +5,7 @@ export const AddEditTaskComponent: FC<AddEditTaskProp> = ({
   inputValue,
   setInputValue,
   addNewTask,
+  editTask,
 }) => {
   return (
     <>
@@ -14,7 +15,10 @@ export const AddEditTaskComponent: FC<AddEditTaskProp> = ({
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <button onClick={addNewTask}>Add</button>
+        <div className="buttons">
+          <button onClick={addNewTask}>Add</button>
+          <button onClick={editTask}>Edit</button>
+        </div>
       </div>
     </>
   );

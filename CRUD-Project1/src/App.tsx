@@ -9,6 +9,11 @@ import { AddEditTaskComponent } from "./components/add-edit-task-component";
 export const App = () => {
   const [tasks, setTasks] = useState<Task[]>(tasksData.tasks);
   const [inputValue, setInputValue] = useState("");
+  const [selectedTask, setSelectedTask] = useState<Task>({
+    id: "",
+    title: "",
+    completed: false,
+  });
 
   const addNewTask = () => {
     if (inputValue.trim() !== "") {
@@ -25,19 +30,39 @@ export const App = () => {
     }
   };
 
+  const prepareToEdit = (task: Task) => {
+    setSelectedTask(task);
+    setInputValue(task.title);
+  };
+
+  const editTask = () => {
+    const newTitle = inputValue;
+    console.log(newTitle);
+    selectedTask.title = newTitle;
+    console.log(selectedTask);
+    setInputValue("");
+  };
+
   const deleteTask = (id: string) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
   return (
-    <div>
+    <>
       <h1>Tasks manager</h1>
-      <AddEditTaskComponent
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        addNewTask={addNewTask}
-      />
-      <TaskList tasks={tasks} deleteTask={deleteTask} />
-    </div>
+      <div className="main-container">
+        <AddEditTaskComponent
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          addNewTask={addNewTask}
+          editTask={editTask}
+        />
+        <TaskList
+          tasks={tasks}
+          deleteTask={deleteTask}
+          prepareToEdit={prepareToEdit}
+        />
+      </div>
+    </>
   );
 };
