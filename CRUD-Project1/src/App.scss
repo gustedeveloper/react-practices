@@ -19,29 +19,39 @@ body {
 
 #root {
   max-width: 1280px;
+  height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+.main-container {
+  padding-top: 150px;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .add-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
 
   label {
+    padding: 10px;
     font-size: 1rem;
   }
 
   input {
-    width: 300px;
+    width: 350px;
+    height: 30px;
     border: none;
     border-radius: 10px;
     text-align: center;
   }
 
   button {
+    margin: 10px;
     width: 50px;
     height: 30px;
     border: none;
@@ -56,14 +66,22 @@ body {
   }
 }
 
+.tasks-container {
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  display: flex;
+}
+
 ul > li {
-  padding-top: 50px;
-  display: grid;
-  grid-template-columns: 700px 260px 100px 100px;
-  grid-auto-rows: 80px;
-  justify-content: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  list-style: none;
 
   button {
+    width: 100px;
     height: 30px;
     font-size: 1rem;
     border: none;
@@ -93,6 +111,11 @@ ul > li {
   }
 
   span {
-    font-size: 2rem;
+    padding: 10px;
+    font-size: 1rem;
   }
+}
+
+.buttons {
+  display: flex;
 }
