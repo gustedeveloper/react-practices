@@ -37,14 +37,20 @@ export const App = () => {
 
   const editTask = () => {
     const newTitle = inputValue;
-    console.log(newTitle);
     selectedTask.title = newTitle;
-    console.log(selectedTask);
     setInputValue("");
   };
 
   const deleteTask = (id: string) => {
     setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  const handleCheckbox = (id: string) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
 
   return (
@@ -61,6 +67,7 @@ export const App = () => {
           tasks={tasks}
           deleteTask={deleteTask}
           prepareToEdit={prepareToEdit}
+          handleCheckbox={handleCheckbox}
         />
       </div>
     </>

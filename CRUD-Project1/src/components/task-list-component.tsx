@@ -5,6 +5,7 @@ export const TaskList: FC<TaskListProps> = ({
   tasks,
   deleteTask,
   prepareToEdit,
+  handleCheckbox,
 }) => {
   return (
     <ul className="tasks-container">
@@ -18,7 +19,12 @@ export const TaskList: FC<TaskListProps> = ({
           <span className="title">{task.title}</span>
           <div className="task-state">
             <label>Completed</label>
-            <input className="checkbox" type="checkbox" />
+            <input
+              className="checkbox"
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => handleCheckbox(task.id)}
+            />
           </div>
 
           <div className="buttons">

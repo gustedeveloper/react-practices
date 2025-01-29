@@ -8,6 +8,7 @@ export interface TaskListProps {
   tasks: Task[];
   deleteTask: (id: string) => void;
   prepareToEdit: (task: Task) => void;
+  handleCheckbox: (id: string) => void;
 }
 
 export interface AddEditTaskProp {
