@@ -9,9 +9,16 @@ export const TaskList: FC<TaskListProps> = ({
   return (
     <ul className="tasks-container">
       {tasks.map((task) => (
-        <li key={task.id}>
+        <li
+          className={
+            tasks.indexOf(task) === tasks.length - 1 ? "last-task" : "task"
+          }
+          key={task.id}
+        >
           <span className="title">{task.title}</span>
-          <span> Completed: {task.completed ? "yes" : "no"}</span>
+          <span>
+            Completed <input type="checkbox" />
+          </span>
           <div className="buttons">
             <button onClick={() => prepareToEdit(task)} className="modify">
               Modify
