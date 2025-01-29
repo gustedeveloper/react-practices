@@ -16,9 +16,11 @@ export const TaskList: FC<TaskListProps> = ({
           key={task.id}
         >
           <span className="title">{task.title}</span>
-          <span>
-            Completed <input type="checkbox" />
-          </span>
+          <div className="task-state">
+            <label>Completed</label>
+            <input className="checkbox" type="checkbox" />
+          </div>
+
           <div className="buttons">
             <button onClick={() => prepareToEdit(task)} className="modify">
               Modify
