@@ -12,7 +12,9 @@ export const AddEditTaskComponent: FC<AddEditTaskProp> = ({
       <div className="add-container">
         <label>Add new task</label>
         <input
+          type="text"
           value={inputValue}
+          maxLength={120}
           onChange={(e) => setInputValue(e.target.value)}
         />
         <div className="buttons">
