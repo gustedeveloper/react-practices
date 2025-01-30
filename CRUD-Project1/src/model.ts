@@ -11,11 +11,9 @@ export interface TaskListProps {
   handleCheckbox: (id: string) => void;
 }
 
-export interface AddEditTaskProp {
-  inputValue: string;
-  setInputValue: (e: string) => void;
+export interface AddEditTaskProps {
   addNewTask: () => void;
   editTask: () => void;
-  checkboxValue: boolean;
-  setCheckboxValue: (e: boolean) => void;
+  selectedTask: Task;
+  setSelectedTask: (e: Task) => void;
 }

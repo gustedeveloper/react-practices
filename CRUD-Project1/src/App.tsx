@@ -8,8 +8,6 @@ import { AddEditTaskComponent } from "./components/add-edit-task-component";
 
 export const App = () => {
   const [tasks, setTasks] = useState<Task[]>(tasksData.tasks);
-  const [inputValue, setInputValue] = useState("");
-  const [checkboxValue, setCheckboxValue] = useState(false);
   const [selectedTask, setSelectedTask] = useState<Task>({
     id: "",
     title: "",
@@ -17,33 +15,50 @@ export const App = () => {
   });
 
   const addNewTask = () => {
-    if (inputValue.trim() !== "") {
+    if (selectedTask.title.trim() !== "") {
       const newTask: Task = {
         id: uuidv4(),
-        title: inputValue,
-        completed: checkboxValue,
+        title: selectedTask.title,
+        completed: selectedTask.completed,
       };
 
       setTasks([...tasks, newTask]);
-      setInputValue("");
+      setSelectedTask({
+        id: "",
+        title: "",
+        completed: false,
+      });
     } else {
       alert("Enter new task!");
     }
   };
 
   const prepareToEdit = (task: Task) => {
-    setSelectedTask(task);
-    setInputValue(task.title);
-    setCheckboxValue(task.completed);
+    setSelectedTask({
+      ...task,
+      title: task.title,
+      completed: task.completed,
+    });
   };
 
   const editTask = () => {
-    const newTitle = inputValue;
-    selectedTask.title = newTitle;
-    setInputValue("");
-    const newState = checkboxValue;
-    selectedTask.completed = newState;
-    setCheckboxValue(false);
+    const updatedTasks = tasks.map((task) =>
+      task.id === selectedTask.id
+        ? {
+            ...task,
+            title: selectedTask.title,
+            completed: selectedTask.completed,
+          }
+        : task
+    );
+
+    setTasks(updatedTasks);
+
+    setSelectedTask({
+      id: "",
+      title: "",
+      completed: false,
+    });
   };
 
   const deleteTask = (id: string) => {
@@ -63,12 +78,10 @@ export const App = () => {
       <h1>Tasks manager</h1>
       <div className="main-container">
         <AddEditTaskComponent
-          inputValue={inputValue}
-          setInputValue={setInputValue}
           addNewTask={addNewTask}
           editTask={editTask}
-          checkboxValue={checkboxValue}
-          setCheckboxValue={setCheckboxValue}
+          selectedTask={selectedTask}
+          setSelectedTask={setSelectedTask}
         />
         <TaskList
           tasks={tasks}

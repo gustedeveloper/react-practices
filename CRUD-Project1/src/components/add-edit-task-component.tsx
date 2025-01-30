@@ -1,16 +1,14 @@
 import { FC } from "react";
-import { AddEditTaskProp } from "../model";
+import { AddEditTaskProps } from "../model";
 
-export const AddEditTaskComponent: FC<AddEditTaskProp> = ({
-  inputValue,
-  setInputValue,
+export const AddEditTaskComponent: FC<AddEditTaskProps> = ({
+  selectedTask,
+  setSelectedTask,
   addNewTask,
   editTask,
-  checkboxValue,
-  setCheckboxValue,
 }) => {
   const isChecked = () => {
-    setCheckboxValue(!checkboxValue);
+    setSelectedTask({ ...selectedTask, completed: !selectedTask.completed });
   };
 
   return (
@@ -19,16 +17,18 @@ export const AddEditTaskComponent: FC<AddEditTaskProp> = ({
         <label>Add new task</label>
         <input
           type="text"
-          value={inputValue}
+          value={selectedTask.title}
           maxLength={120}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) =>
+            setSelectedTask({ ...selectedTask, title: e.target.value })
+          }
         />
         <div className="task-state">
           <label>Completed</label>
           <input
             className="checkbox"
             type="checkbox"
-            checked={checkboxValue}
+            checked={selectedTask.completed}
             onChange={isChecked}
           />
         </div>
