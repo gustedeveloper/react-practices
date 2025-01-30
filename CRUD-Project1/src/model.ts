@@ -16,4 +16,6 @@ export interface AddEditTaskProp {
   setInputValue: (e: string) => void;
   addNewTask: () => void;
   editTask: () => void;
+  checkboxValue: boolean;
+  setCheckboxValue: (e: boolean) => void;
 }
