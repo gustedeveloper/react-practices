@@ -43,7 +43,6 @@ h1 {
 }
 
 .add-container {
-  height: 150px;
   border-radius: 25px;
   padding: 15px 30px;
   background-color: $primary-color;
@@ -53,7 +52,6 @@ h1 {
   align-items: center;
 
   label {
-    padding: 10px;
     font-size: 1rem;
   }
 
@@ -94,6 +92,26 @@ h1 {
   border-bottom: 1px solid gray;
 }
 
+.task-state {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+
+  input {
+    margin: 0px 10px;
+    appearance: none;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  input:checked {
+    background-color: #c3a0f6;
+  }
+}
+
 ul > li {
   padding: 15px 0px;
   display: flex;
@@ -122,26 +140,6 @@ ul > li {
     border: none;
     border-radius: 10px;
     margin: 5px;
-  }
-
-  .task-state {
-    padding: 10px;
-    display: flex;
-    align-items: center;
-
-    input {
-      margin: 0px 10px;
-      appearance: none;
-      background-color: white;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    input:checked {
-      background-color: #c3a0f6;
-    }
   }
 
   .modify {
