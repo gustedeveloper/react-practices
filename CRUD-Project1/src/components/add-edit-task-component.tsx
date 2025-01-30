@@ -6,7 +6,13 @@ export const AddEditTaskComponent: FC<AddEditTaskProp> = ({
   setInputValue,
   addNewTask,
   editTask,
+  checkboxValue,
+  setCheckboxValue,
 }) => {
+  const isChecked = () => {
+    setCheckboxValue(!checkboxValue);
+  };
+
   return (
     <>
       <div className="add-container">
@@ -17,6 +23,15 @@ export const AddEditTaskComponent: FC<AddEditTaskProp> = ({
           maxLength={120}
           onChange={(e) => setInputValue(e.target.value)}
         />
+        <div className="task-state">
+          <label>Completed</label>
+          <input
+            className="checkbox"
+            type="checkbox"
+            checked={checkboxValue}
+            onChange={isChecked}
+          />
+        </div>
         <div className="buttons">
           <button onClick={addNewTask}>Add</button>
           <button onClick={editTask}>Edit</button>

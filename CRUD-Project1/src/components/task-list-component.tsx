@@ -26,7 +26,6 @@ export const TaskList: FC<TaskListProps> = ({
               onChange={() => handleCheckbox(task.id)}
             />
           </div>
-
           <div className="buttons">
             <button onClick={() => prepareToEdit(task)} className="modify">
               Modify

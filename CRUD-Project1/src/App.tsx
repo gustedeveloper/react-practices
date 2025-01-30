@@ -9,6 +9,7 @@ import { AddEditTaskComponent } from "./components/add-edit-task-component";
 export const App = () => {
   const [tasks, setTasks] = useState<Task[]>(tasksData.tasks);
   const [inputValue, setInputValue] = useState("");
+  const [checkboxValue, setCheckboxValue] = useState(false);
   const [selectedTask, setSelectedTask] = useState<Task>({
     id: "",
     title: "",
@@ -20,7 +21,7 @@ export const App = () => {
       const newTask: Task = {
         id: uuidv4(),
         title: inputValue,
-        completed: false,
+        completed: checkboxValue,
       };
 
       setTasks([...tasks, newTask]);
@@ -33,12 +34,16 @@ export const App = () => {
   const prepareToEdit = (task: Task) => {
     setSelectedTask(task);
     setInputValue(task.title);
+    setCheckboxValue(task.completed);
   };
 
   const editTask = () => {
     const newTitle = inputValue;
     selectedTask.title = newTitle;
     setInputValue("");
+    const newState = checkboxValue;
+    selectedTask.completed = newState;
+    setCheckboxValue(false);
   };
 
   const deleteTask = (id: string) => {
@@ -62,6 +67,8 @@ export const App = () => {
           setInputValue={setInputValue}
           addNewTask={addNewTask}
           editTask={editTask}
+          checkboxValue={checkboxValue}
+          setCheckboxValue={setCheckboxValue}
         />
         <TaskList
           tasks={tasks}
