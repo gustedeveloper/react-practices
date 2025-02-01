@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { AddEditTaskProps } from "../model";
+import { AddEditTaskProps, Task } from "../model";
 
 export const AddEditTaskComponent: FC<AddEditTaskProps> = ({
   selectedTask,
@@ -9,6 +9,12 @@ export const AddEditTaskComponent: FC<AddEditTaskProps> = ({
   const isChecked = () => {
     setSelectedTask({ ...selectedTask, completed: !selectedTask.completed });
   };
+
+  const handleOnChange =
+    (field: keyof Task) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setSelectedTask({ ...selectedTask, [field]: e.target.value });
+    };
 
   return (
     <>
@@ -21,9 +27,7 @@ export const AddEditTaskComponent: FC<AddEditTaskProps> = ({
             type="text"
             value={selectedTask.title}
             maxLength={120}
-            onChange={(e) =>
-              setSelectedTask({ ...selectedTask, title: e.target.value })
-            }
+            onChange={handleOnChange("title")}
           />
         </div>
 
@@ -42,9 +46,7 @@ export const AddEditTaskComponent: FC<AddEditTaskProps> = ({
           <textarea
             className="description-input"
             value={selectedTask.description}
-            onChange={(e) =>
-              setSelectedTask({ ...selectedTask, description: e.target.value })
-            }
+            onChange={handleOnChange("description")}
           />
         </div>
 
