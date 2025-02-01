@@ -6,17 +6,28 @@ $button-color: #778da9;
 $hover-color: #415a77;
 $alert-color: #e63946;
 
+@mixin button-base {
+  cursor: pointer;
+  background-color: $button-color;
+  color: $primary-color;
+  width: 100px;
+  height: 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  margin: 5px;
+  transition: ease 0.5s background-color;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
 body {
   box-sizing: border-box;
   background-color: $bg-color;
   color: $bg-color;
   font-family: Arial, Helvetica, sans-serif;
-
-  button {
-    cursor: pointer;
-    transition: ease 0.5s background-color;
-    color: $primary-color;
-  }
 }
 
 h1 {
@@ -66,16 +77,15 @@ h1 {
   }
 
   button {
-    margin: 10px;
-    width: 50px;
-    height: 30px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    background-color: $button-color;
+    @include button-base;
   }
-  button:hover {
-    background-color: $hover-color;
+
+  .disabled {
+    cursor: default;
+    opacity: 60%;
+    &:hover {
+      background-color: $button-color;
+    }
   }
 }
 
@@ -135,29 +145,18 @@ ul > li {
   }
 
   button {
-    width: 100px;
-    height: 30px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px;
-    margin: 5px;
+    @include button-base;
   }
 
   .modify {
     background-color: $button-color;
   }
 
-  .modify:hover {
-    background-color: $hover-color;
-  }
-
   .delete {
     background-color: $alert-color;
-    color: $primary-color;
-  }
-
-  .delete:hover {
-    background-color: color.scale($alert-color, $lightness: -50%);
+    &:hover {
+      background-color: color.scale($alert-color, $lightness: -50%);
+    }
   }
 
   .title {

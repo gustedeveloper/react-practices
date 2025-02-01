@@ -15,6 +15,7 @@ export const App = () => {
   });
 
   const addEditTask = () => {
+    console.log("hey");
     if (selectedTask.id === "") {
       const newTask: Task = {
         id: uuidv4(),

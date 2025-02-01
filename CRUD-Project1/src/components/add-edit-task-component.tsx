@@ -32,7 +32,13 @@ export const AddEditTaskComponent: FC<AddEditTaskProps> = ({
           />
         </div>
         <div className="buttons">
-          <button onClick={addEditTask}>Add</button>
+          <button
+            disabled={selectedTask.title === ""}
+            className={selectedTask.title === "" ? "disabled" : ""}
+            onClick={addEditTask}
+          >
+            Add
+          </button>
         </div>
       </div>
     </>
