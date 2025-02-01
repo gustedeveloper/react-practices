@@ -14,8 +14,8 @@ export const App = () => {
     completed: false,
   });
 
-  const addNewTask = () => {
-    if (selectedTask.title.trim() !== "") {
+  const addEditTask = () => {
+    if (selectedTask.id === "") {
       const newTask: Task = {
         id: uuidv4(),
         title: selectedTask.title,
@@ -23,14 +23,23 @@ export const App = () => {
       };
 
       setTasks([...tasks, newTask]);
-      setSelectedTask({
-        id: "",
-        title: "",
-        completed: false,
-      });
     } else {
-      alert("Enter new task!");
+      const updatedTasks = tasks.map((task) =>
+        task.id === selectedTask.id
+          ? {
+              ...task,
+              title: selectedTask.title,
+              completed: selectedTask.completed,
+            }
+          : task
+      );
+      setTasks(updatedTasks);
     }
+    setSelectedTask({
+      id: "",
+      title: "",
+      completed: false,
+    });
   };
 
   const prepareToEdit = (task: Task) => {
@@ -38,26 +47,6 @@ export const App = () => {
       ...task,
       title: task.title,
       completed: task.completed,
-    });
-  };
-
-  const editTask = () => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === selectedTask.id
-        ? {
-            ...task,
-            title: selectedTask.title,
-            completed: selectedTask.completed,
-          }
-        : task
-    );
-
-    setTasks(updatedTasks);
-
-    setSelectedTask({
-      id: "",
-      title: "",
-      completed: false,
     });
   };
 
@@ -78,8 +67,7 @@ export const App = () => {
       <h1>Tasks manager</h1>
       <div className="main-container">
         <AddEditTaskComponent
-          addNewTask={addNewTask}
-          editTask={editTask}
+          addEditTask={addEditTask}
           selectedTask={selectedTask}
           setSelectedTask={setSelectedTask}
         />

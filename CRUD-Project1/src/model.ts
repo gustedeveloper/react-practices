@@ -12,8 +12,7 @@ export interface TaskListProps {
 }
 
 export interface AddEditTaskProps {
-  addNewTask: () => void;
-  editTask: () => void;
+  addEditTask: () => void;
   selectedTask: Task;
   setSelectedTask: (e: Task) => void;
 }

@@ -4,8 +4,7 @@ import { AddEditTaskProps } from "../model";
 export const AddEditTaskComponent: FC<AddEditTaskProps> = ({
   selectedTask,
   setSelectedTask,
-  addNewTask,
-  editTask,
+  addEditTask,
 }) => {
   const isChecked = () => {
     setSelectedTask({ ...selectedTask, completed: !selectedTask.completed });
@@ -33,8 +32,7 @@ export const AddEditTaskComponent: FC<AddEditTaskProps> = ({
           />
         </div>
         <div className="buttons">
-          <button onClick={addNewTask}>Add</button>
-          <button onClick={editTask}>Edit</button>
+          <button onClick={addEditTask}>Add</button>
         </div>
       </div>
     </>
