@@ -12,6 +12,7 @@ export const App = () => {
     id: "",
     title: "",
     completed: false,
+    description: "",
   });
 
   const addEditTask = () => {
@@ -21,6 +22,7 @@ export const App = () => {
         id: uuidv4(),
         title: selectedTask.title,
         completed: selectedTask.completed,
+        description: selectedTask.description,
       };
 
       setTasks([...tasks, newTask]);
@@ -31,6 +33,7 @@ export const App = () => {
               ...task,
               title: selectedTask.title,
               completed: selectedTask.completed,
+              description: selectedTask.description,
             }
           : task
       );
@@ -40,6 +43,7 @@ export const App = () => {
       id: "",
       title: "",
       completed: false,
+      description: "",
     });
   };
 
@@ -48,6 +52,7 @@ export const App = () => {
       ...task,
       title: task.title,
       completed: task.completed,
+      description: task.description,
     });
   };
 

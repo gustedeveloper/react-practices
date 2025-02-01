@@ -56,28 +56,48 @@ h1 {
 .add-container {
   border-radius: 25px;
   padding: 15px 30px;
-  height: 300px;
+  height: 500px;
   background-color: $primary-color;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  label {
-    font-size: 1rem;
+  .task-title,
+  .task-description {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    label {
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      border: none;
+      border-radius: 10px;
+    }
   }
 
-  input {
-    margin: 10px;
+  .title-input {
     width: 350px;
     height: 30px;
-    border: none;
-    border-radius: 10px;
     text-align: center;
+  }
+
+  .description-input {
+    max-width: 350px;
+    min-width: 200px;
+    width: 350px;
+    min-height: 50px;
+    max-height: 100px;
   }
 
   button {
     @include button-base;
+    margin-top: 20px;
   }
 
   .disabled {
@@ -104,9 +124,14 @@ h1 {
 }
 
 .task-state {
-  padding: 10px;
+  padding-top: 10px;
+  padding-right: 210px;
   display: flex;
   align-items: center;
+
+  label {
+    font-weight: bold;
+  }
 
   input {
     margin: 0px 10px;
@@ -139,9 +164,24 @@ ul > li {
 
   span {
     display: flex;
-    padding: 10px;
     font-size: 1rem;
     align-items: center;
+  }
+
+  .description-container {
+    margin: 10px 0px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0px 10px;
+  }
+
+  p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 12px;
+    text-align: start;
   }
 
   button {

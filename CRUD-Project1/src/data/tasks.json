@@ -3,17 +3,20 @@
     {
       "id": "1",
       "title": "Practice useContext and the use of Router-dom in React",
-      "completed": false
+      "completed": false,
+      "description": "Review how to use the React Context API to manage global state and practice implementing React Router for navigation between pages."
     },
     {
       "id": "2",
       "title": "Write one page in your gratitude diary",
-      "completed": false
+      "completed": false,
+      "description": "Take a moment to reflect on positive experiences and write at least one page about things you are grateful for today."
     },
     {
       "id": "3",
       "title": "Train upper body in the gym 1 hour",
-      "completed": false
+      "completed": false,
+      "description": "Focus on upper body strength training, including exercises for shoulders, chest, back, and arms. Maintain proper form and intensity."
     }
   ]
 }
