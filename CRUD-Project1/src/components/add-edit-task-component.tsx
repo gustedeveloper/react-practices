@@ -50,6 +50,21 @@ export const AddEditTaskComponent: FC<AddEditTaskProps> = ({
           />
         </div>
 
+        <div className="task-dates">
+          <label>Start</label>
+          <input
+            type="date"
+            value={selectedTask.startDate}
+            onChange={handleOnChange("startDate")}
+          />
+          <label>End</label>
+          <input
+            type="date"
+            value={selectedTask.endDate}
+            onChange={handleOnChange("endDate")}
+          />
+        </div>
+
         <div className="buttons">
           <button
             disabled={selectedTask.title === ""}

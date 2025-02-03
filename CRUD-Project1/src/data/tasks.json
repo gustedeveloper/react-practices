@@ -4,7 +4,9 @@
       "id": "1",
       "title": "Practice useContext and the use of Router-dom in React",
       "completed": false,
-      "description": "Review how to use the React Context API to manage global state and practice implementing React Router for navigation between pages."
+      "description": "Review how to use the React Context API to manage global state and practice implementing React Router for navigation between pages.",
+      "startDate": "2025-01-25",
+      "endDate": "2025-02-15"
     },
     {
       "id": "2",

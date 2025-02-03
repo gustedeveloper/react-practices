@@ -17,6 +17,7 @@ export const TaskList: FC<TaskListProps> = ({
           key={task.id}
         >
           <span className="title">{task.title}</span>
+
           <div className="task-state">
             <label>Completed</label>
             <input
@@ -26,8 +27,14 @@ export const TaskList: FC<TaskListProps> = ({
               onChange={() => handleCheckbox(task.id)}
             />
           </div>
+
           <div className="description-container">
             <p className="description">{task.description}</p>
+          </div>
+
+          <div className="dates">
+            <span> {task.startDate ? `Start: ${task.startDate}` : ""}</span>
+            <span>{task.endDate ? `End: ${task.endDate}` : ""}</span>
           </div>
 
           <div className="buttons">

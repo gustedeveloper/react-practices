@@ -13,6 +13,8 @@ export const App = () => {
     title: "",
     completed: false,
     description: "",
+    startDate: "0000-00-00",
+    endDate: "0000-00-00",
   });
 
   const addEditTask = () => {
@@ -23,6 +25,8 @@ export const App = () => {
         title: selectedTask.title,
         completed: selectedTask.completed,
         description: selectedTask.description,
+        startDate: selectedTask.startDate,
+        endDate: selectedTask.endDate,
       };
 
       setTasks([...tasks, newTask]);
@@ -44,6 +48,8 @@ export const App = () => {
       title: "",
       completed: false,
       description: "",
+      startDate: "0000-00-00",
+      endDate: "0000-00-00",
     });
   };
 
@@ -53,6 +59,8 @@ export const App = () => {
       title: task.title,
       completed: task.completed,
       description: task.description,
+      startDate: task.startDate,
+      endDate: task.endDate,
     });
   };
 

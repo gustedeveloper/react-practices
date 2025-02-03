@@ -3,6 +3,8 @@ export interface Task {
   title: string;
   completed: boolean;
   description: string;
+  startDate?: string;
+  endDate?: string;
 }
 
 export interface TaskListProps {
