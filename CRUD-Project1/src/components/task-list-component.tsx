@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { TaskListProps } from "../model";
+import { useNavigate } from "react-router-dom";
 
 export const TaskList: FC<TaskListProps> = ({
   tasks,
@@ -7,6 +8,8 @@ export const TaskList: FC<TaskListProps> = ({
   prepareToEdit,
   handleCheckbox,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <ul className="tasks-container">
       {tasks.map((task) => (
@@ -43,6 +46,12 @@ export const TaskList: FC<TaskListProps> = ({
             </button>
             <button onClick={() => deleteTask(task.id)} className="delete">
               Delete
+            </button>
+            <button
+              onClick={() => navigate(`/task-detail/${task.id}`)}
+              className="detail"
+            >
+              View detail
             </button>
           </div>
         </li>

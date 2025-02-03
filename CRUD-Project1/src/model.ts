@@ -19,3 +19,12 @@ export interface AddEditTaskProps {
   selectedTask: Task;
   setSelectedTask: (e: Task) => void;
 }
+
+export const createDefaultTaskDetail = () => ({
+  id: "",
+  title: "",
+  completed: false,
+  description: "",
+  startDate: "",
+  endDate: "",
+});
